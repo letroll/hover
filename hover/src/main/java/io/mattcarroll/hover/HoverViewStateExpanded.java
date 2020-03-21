@@ -32,7 +32,7 @@ import java.util.Map;
  * {@link HoverViewState} that operates the {@link HoverView} when it is expanded. Expanded means
  * that all menu tabs are displayed along the top of the {@code HoverView} and the selected
  * {@link HoverMenu.Section}'s {@link Content} is displayed below the row of tabs.
- *
+ * <p>
  * When the selected tab is tapped again by the user, the {@code HoverView} is transitioned to its
  * collapsed state.
  */
@@ -74,7 +74,8 @@ class HoverViewStateExpanded extends BaseHoverViewState {
         }
     };
 
-    HoverViewStateExpanded() { }
+    HoverViewStateExpanded() {
+    }
 
     @Override
     public void takeControl(@NonNull HoverView hoverView) {
@@ -241,6 +242,7 @@ class HoverViewStateExpanded extends BaseHoverViewState {
     }
 
     private int mTabsToUnchainCount;
+
     private void unchainTabs(@Nullable final Runnable onUnChained) {
         int selectedTabIndex = 0;
         for (int i = 0; i < mChainedTabs.size(); ++i) {
@@ -384,7 +386,7 @@ class HoverViewStateExpanded extends BaseHoverViewState {
         collapse();
     }
 
-    private void createTabsForIndices(int ... sectionIndices) {
+    private void createTabsForIndices(int... sectionIndices) {
         for (int sectionIndex : sectionIndices) {
             Log.d(TAG, "Creating tab for section at index " + sectionIndex);
             HoverMenu.Section section = mHoverView.mMenu.getSection(sectionIndex);
@@ -433,7 +435,7 @@ class HoverViewStateExpanded extends BaseHoverViewState {
         updateChainedPositions();
     }
 
-    private void updateSections(int ... sectionIndices) {
+    private void updateSections(int... sectionIndices) {
         Log.d(TAG, "Tab(s) changed: " + Arrays.toString(sectionIndices));
         for (int sectionIndex : sectionIndices) {
             updateSection(sectionIndex);
@@ -457,7 +459,7 @@ class HoverViewStateExpanded extends BaseHoverViewState {
         }
     }
 
-    private void removeSections(int ... sectionIndices) {
+    private void removeSections(int... sectionIndices) {
         Log.d(TAG, "Tab(s) removed: " + Arrays.toString(sectionIndices));
         // Sort the indices so that they appear from lowest to highest.  Then process
         // in reverse order so that we don't remove sections out from under us.
